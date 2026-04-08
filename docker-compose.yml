@@ -1,0 +1,19 @@
+services:
+  vlc-kiosk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      VNC_SCREEN_SIZE: 1280x720
+      VNC_COLOR_DEPTH: 24
+      VNC_PASSWORD: ""
+      VLC_MEDIA: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+      VLC_NETWORK_CACHING: 150
+      VLC_PREFERRED_RESOLUTION: 480
+      BROWSER_AUDIO_ENABLED: 1
+      BROWSER_AUDIO_PORT: 8090
+    ports:
+      - "5900:5900"
+      - "6080:6080"
+      - "8090:8090"
+    restart: unless-stopped
